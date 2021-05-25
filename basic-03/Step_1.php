@@ -1,14 +1,12 @@
 <?php
-for($x=1;$x<=8;$x++)
+$row=1;
+$star=1;
+for($row=1;$row<=8;$row++)
 {
-   for ($y=1;$y<=$x;$y++)
+   for ($star=1;$star<=$row;$star++)
     {
-	 echo "*";
-	    if($y< $x)
-		 {
-		   echo " ";
-		 }
+     echo "*";
      }
- echo "\n";
+ echo "<br>";
 }
 ?>
