@@ -19,8 +19,12 @@
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
         $create_datetime = date("Y-m-d H:i:s");
-        $query    = "INSERT into `users` (username, password, email, create_datetime)
-                     VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
+        $full_name = $_REQUEST['full_name'];
+        $phonenumber = $_REQUEST['phonenumber'];
+        $dateofbirth = $_REQUEST['dateofbirth'];
+        $socialnumber = $_REQUEST['socialnumber'];
+        $query    = "INSERT into `users` (username, password, email, create_datetime, full_name, phonenumber, dateofbirth, socialnumber)
+                     VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime','$full_name','$phonenumber','$dateofbirth','$socialnumber')";
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='form'>
@@ -37,9 +41,13 @@
 ?>
     <form class="form" action="" method="post">
         <h1 class="login-title">Registration</h1>
+         <input type="text" class="login-input" name="full_name" placeholder="Full Name" required />
         <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress">
-        <input type="password" class="login-input" name="password" placeholder="Password">
+        <input type="text" class="login-input" name="email" placeholder="Email Adress" required>
+        <input type="password" class="login-input" name="password" placeholder="Password"required>
+        <input type="number" id="phone" name="phonenumber" placeholder="Phone Number">
+        <input type="date" class="login-input" name="dateofbirth" required>
+        <input type="number" class="login-input" name="socialnumber" placeholder="Social Security Number" required>
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link">Already have an account? <a href="login.php">Login here</a></p>
     </form>
