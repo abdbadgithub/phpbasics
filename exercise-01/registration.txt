@@ -1,0 +1,3 @@
+registration for php my admin :
+admin
+test
